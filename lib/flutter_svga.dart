@@ -1,5 +1,4 @@
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/parser.dart';
+export 'src/player.dart';
+export 'src/proto/svga.pb.dart' show MovieEntity, MovieParams, ShapeEntity, FrameEntity;
+export 'src/dynamic_entity.dart';
