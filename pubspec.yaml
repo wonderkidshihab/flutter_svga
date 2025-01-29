@@ -1,7 +1,8 @@
 name: flutter_svga
-description: "A Flutter package for rendering SVGA animations."
-version: 0.0.1
+description: "A Flutter package for rendering SVGA animations with dynamic customization, smooth playback, and high performance."
+version: 0.0.2
 homepage: https://github.com/5alafawyyy/flutter_svga
+repository: https://github.com/5alafawyyy/flutter_svga
 
 environment:
   sdk: ^3.6.1

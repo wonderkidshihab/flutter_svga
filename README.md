@@ -5,6 +5,7 @@ SVGA is a lightweight and powerful animation format used for **dynamic UI effect
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/5alafawyyy/flutter_svga/main/example.gif" width="300"/>
+  <img src="https://raw.githubusercontent.com/5alafawyyy/flutter_svga/main/example1.gif" width="300"/>
 </p>
 
 ---
@@ -26,7 +27,7 @@ Add **flutter_svga** to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_svga: ^0.0.1
+  flutter_svga: ^0.0.2
 ```
 Then, install dependencies:
 
@@ -199,8 +200,10 @@ setState(() {
 |----------|-----------|
 | ✅ Android | ✔️ Yes |
 | ✅ iOS | ✔️ Yes |
-| 🕐 Web | ⏳ Planned |
-| 🖥️ Desktop | ⏳ Planned |
+| ✅ Linux | ✔️ Yes |
+| ✅ Web | ✔️ Yes |
+| ✅ macOS | ✔️ Yes |
+| ✅ Desktop | ✔️ Yes |
 
 ---
 

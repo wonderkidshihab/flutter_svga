@@ -43,7 +43,7 @@ class ShapeEntity_ShapeType extends $pb.ProtobufEnum {
       $pb.ProtobufEnum.initByValue(values);
   static ShapeEntity_ShapeType? valueOf($core.int value) => _byValue[value];
 
-  const ShapeEntity_ShapeType._($core.int v, $core.String n) : super(v, n);
+  const ShapeEntity_ShapeType._(super.v, super.n);
 }
 
 class ShapeEntity_ShapeStyle_LineCap extends $pb.ProtobufEnum {
@@ -78,8 +78,7 @@ class ShapeEntity_ShapeStyle_LineCap extends $pb.ProtobufEnum {
   static ShapeEntity_ShapeStyle_LineCap? valueOf($core.int value) =>
       _byValue[value];
 
-  const ShapeEntity_ShapeStyle_LineCap._($core.int v, $core.String n)
-      : super(v, n);
+  const ShapeEntity_ShapeStyle_LineCap._(super.v, super.n);
 }
 
 class ShapeEntity_ShapeStyle_LineJoin extends $pb.ProtobufEnum {
@@ -114,6 +113,5 @@ class ShapeEntity_ShapeStyle_LineJoin extends $pb.ProtobufEnum {
   static ShapeEntity_ShapeStyle_LineJoin? valueOf($core.int value) =>
       _byValue[value];
 
-  const ShapeEntity_ShapeStyle_LineJoin._($core.int v, $core.String n)
-      : super(v, n);
+  const ShapeEntity_ShapeStyle_LineJoin._(super.v, super.n);
 }

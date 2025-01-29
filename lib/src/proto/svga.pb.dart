@@ -60,20 +60,20 @@ class MovieParams extends $pb.GeneratedMessage {
     $core.int? fps,
     $core.int? frames,
   }) {
-    final _result = create();
+    final result = create();
     if (viewBoxWidth != null) {
-      _result.viewBoxWidth = viewBoxWidth;
+      result.viewBoxWidth = viewBoxWidth;
     }
     if (viewBoxHeight != null) {
-      _result.viewBoxHeight = viewBoxHeight;
+      result.viewBoxHeight = viewBoxHeight;
     }
     if (fps != null) {
-      _result.fps = fps;
+      result.fps = fps;
     }
     if (frames != null) {
-      _result.frames = frames;
+      result.frames = frames;
     }
-    return _result;
+    return result;
   }
   factory MovieParams.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -187,17 +187,17 @@ class SpriteEntity extends $pb.GeneratedMessage {
     $core.Iterable<FrameEntity>? frames,
     $core.String? matteKey,
   }) {
-    final _result = create();
+    final result = create();
     if (imageKey != null) {
-      _result.imageKey = imageKey;
+      result.imageKey = imageKey;
     }
     if (frames != null) {
-      _result.frames.addAll(frames);
+      result.frames.addAll(frames);
     }
     if (matteKey != null) {
-      _result.matteKey = matteKey;
+      result.matteKey = matteKey;
     }
-    return _result;
+    return result;
   }
   factory SpriteEntity.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -308,23 +308,23 @@ class AudioEntity extends $pb.GeneratedMessage {
     $core.int? startTime,
     $core.int? totalTime,
   }) {
-    final _result = create();
+    final result = create();
     if (audioKey != null) {
-      _result.audioKey = audioKey;
+      result.audioKey = audioKey;
     }
     if (startFrame != null) {
-      _result.startFrame = startFrame;
+      result.startFrame = startFrame;
     }
     if (endFrame != null) {
-      _result.endFrame = endFrame;
+      result.endFrame = endFrame;
     }
     if (startTime != null) {
-      _result.startTime = startTime;
+      result.startTime = startTime;
     }
     if (totalTime != null) {
-      _result.totalTime = totalTime;
+      result.totalTime = totalTime;
     }
-    return _result;
+    return result;
   }
   factory AudioEntity.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -456,20 +456,20 @@ class Layout extends $pb.GeneratedMessage {
     $core.double? width,
     $core.double? height,
   }) {
-    final _result = create();
+    final result = create();
     if (x != null) {
-      _result.x = x;
+      result.x = x;
     }
     if (y != null) {
-      _result.y = y;
+      result.y = y;
     }
     if (width != null) {
-      _result.width = width;
+      result.width = width;
     }
     if (height != null) {
-      _result.height = height;
+      result.height = height;
     }
-    return _result;
+    return result;
   }
   factory Layout.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -603,26 +603,26 @@ class Transform extends $pb.GeneratedMessage {
     $core.double? tx,
     $core.double? ty,
   }) {
-    final _result = create();
+    final result = create();
     if (a != null) {
-      _result.a = a;
+      result.a = a;
     }
     if (b != null) {
-      _result.b = b;
+      result.b = b;
     }
     if (c != null) {
-      _result.c = c;
+      result.c = c;
     }
     if (d != null) {
-      _result.d = d;
+      result.d = d;
     }
     if (tx != null) {
-      _result.tx = tx;
+      result.tx = tx;
     }
     if (ty != null) {
-      _result.ty = ty;
+      result.ty = ty;
     }
-    return _result;
+    return result;
   }
   factory Transform.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -744,11 +744,11 @@ class ShapeEntity_ShapeArgs extends $pb.GeneratedMessage {
   factory ShapeEntity_ShapeArgs({
     $core.String? d,
   }) {
-    final _result = create();
+    final result = create();
     if (d != null) {
-      _result.d = d;
+      result.d = d;
     }
-    return _result;
+    return result;
   }
   factory ShapeEntity_ShapeArgs.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -843,23 +843,23 @@ class ShapeEntity_RectArgs extends $pb.GeneratedMessage {
     $core.double? height,
     $core.double? cornerRadius,
   }) {
-    final _result = create();
+    final result = create();
     if (x != null) {
-      _result.x = x;
+      result.x = x;
     }
     if (y != null) {
-      _result.y = y;
+      result.y = y;
     }
     if (width != null) {
-      _result.width = width;
+      result.width = width;
     }
     if (height != null) {
-      _result.height = height;
+      result.height = height;
     }
     if (cornerRadius != null) {
-      _result.cornerRadius = cornerRadius;
+      result.cornerRadius = cornerRadius;
     }
-    return _result;
+    return result;
   }
   factory ShapeEntity_RectArgs.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -995,20 +995,20 @@ class ShapeEntity_EllipseArgs extends $pb.GeneratedMessage {
     $core.double? radiusX,
     $core.double? radiusY,
   }) {
-    final _result = create();
+    final result = create();
     if (x != null) {
-      _result.x = x;
+      result.x = x;
     }
     if (y != null) {
-      _result.y = y;
+      result.y = y;
     }
     if (radiusX != null) {
-      _result.radiusX = radiusX;
+      result.radiusX = radiusX;
     }
     if (radiusY != null) {
-      _result.radiusY = radiusY;
+      result.radiusY = radiusY;
     }
-    return _result;
+    return result;
   }
   factory ShapeEntity_EllipseArgs.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1131,20 +1131,20 @@ class ShapeEntity_ShapeStyle_RGBAColor extends $pb.GeneratedMessage {
     $core.double? b,
     $core.double? a,
   }) {
-    final _result = create();
+    final result = create();
     if (r != null) {
-      _result.r = r;
+      result.r = r;
     }
     if (g != null) {
-      _result.g = g;
+      result.g = g;
     }
     if (b != null) {
-      _result.b = b;
+      result.b = b;
     }
     if (a != null) {
-      _result.a = a;
+      result.a = a;
     }
-    return _result;
+    return result;
   }
   factory ShapeEntity_ShapeStyle_RGBAColor.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1318,35 +1318,35 @@ class ShapeEntity_ShapeStyle extends $pb.GeneratedMessage {
     $core.double? lineDashII,
     $core.double? lineDashIII,
   }) {
-    final _result = create();
+    final result = create();
     if (fill != null) {
-      _result.fill = fill;
+      result.fill = fill;
     }
     if (stroke != null) {
-      _result.stroke = stroke;
+      result.stroke = stroke;
     }
     if (strokeWidth != null) {
-      _result.strokeWidth = strokeWidth;
+      result.strokeWidth = strokeWidth;
     }
     if (lineCap != null) {
-      _result.lineCap = lineCap;
+      result.lineCap = lineCap;
     }
     if (lineJoin != null) {
-      _result.lineJoin = lineJoin;
+      result.lineJoin = lineJoin;
     }
     if (miterLimit != null) {
-      _result.miterLimit = miterLimit;
+      result.miterLimit = miterLimit;
     }
     if (lineDashI != null) {
-      _result.lineDashI = lineDashI;
+      result.lineDashI = lineDashI;
     }
     if (lineDashII != null) {
-      _result.lineDashII = lineDashII;
+      result.lineDashII = lineDashII;
     }
     if (lineDashIII != null) {
-      _result.lineDashIII = lineDashIII;
+      result.lineDashIII = lineDashIII;
     }
-    return _result;
+    return result;
   }
   factory ShapeEntity_ShapeStyle.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1493,7 +1493,7 @@ class ShapeEntity_ShapeStyle extends $pb.GeneratedMessage {
 enum ShapeEntity_Args { shape, rect, ellipse, notSet }
 
 class ShapeEntity extends $pb.GeneratedMessage {
-  static const $core.Map<$core.int, ShapeEntity_Args> _ShapeEntity_ArgsByTag = {
+  static const $core.Map<$core.int, ShapeEntity_Args> shapeEntityArgsByTag = {
     2: ShapeEntity_Args.shape,
     3: ShapeEntity_Args.rect,
     4: ShapeEntity_Args.ellipse,
@@ -1559,26 +1559,26 @@ class ShapeEntity extends $pb.GeneratedMessage {
     ShapeEntity_ShapeStyle? styles,
     Transform? transform,
   }) {
-    final _result = create();
+    final result = create();
     if (type != null) {
-      _result.type = type;
+      result.type = type;
     }
     if (shape != null) {
-      _result.shape = shape;
+      result.shape = shape;
     }
     if (rect != null) {
-      _result.rect = rect;
+      result.rect = rect;
     }
     if (ellipse != null) {
-      _result.ellipse = ellipse;
+      result.ellipse = ellipse;
     }
     if (styles != null) {
-      _result.styles = styles;
+      result.styles = styles;
     }
     if (transform != null) {
-      _result.transform = transform;
+      result.transform = transform;
     }
-    return _result;
+    return result;
   }
   factory ShapeEntity.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1606,7 +1606,7 @@ class ShapeEntity extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<ShapeEntity>(create);
   static ShapeEntity? _defaultInstance;
 
-  ShapeEntity_Args whichArgs() => _ShapeEntity_ArgsByTag[$_whichOneof(0)]!;
+  ShapeEntity_Args whichArgs() => shapeEntityArgsByTag[$_whichOneof(0)]!;
   void clearArgs() => clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
@@ -1743,23 +1743,23 @@ class FrameEntity extends $pb.GeneratedMessage {
     $core.String? clipPath,
     $core.Iterable<ShapeEntity>? shapes,
   }) {
-    final _result = create();
+    final result = create();
     if (alpha != null) {
-      _result.alpha = alpha;
+      result.alpha = alpha;
     }
     if (layout != null) {
-      _result.layout = layout;
+      result.layout = layout;
     }
     if (transform != null) {
-      _result.transform = transform;
+      result.transform = transform;
     }
     if (clipPath != null) {
-      _result.clipPath = clipPath;
+      result.clipPath = clipPath;
     }
     if (shapes != null) {
-      _result.shapes.addAll(shapes);
+      result.shapes.addAll(shapes);
     }
-    return _result;
+    return result;
   }
   factory FrameEntity.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1900,23 +1900,23 @@ class MovieEntity extends $pb.GeneratedMessage {
     $core.Iterable<SpriteEntity>? sprites,
     $core.Iterable<AudioEntity>? audios,
   }) {
-    final _result = create();
+    final result = create();
     if (version != null) {
-      _result.version = version;
+      result.version = version;
     }
     if (params != null) {
-      _result.params = params;
+      result.params = params;
     }
     if (images != null) {
-      _result.images.addAll(images);
+      result.images.addAll(images);
     }
     if (sprites != null) {
-      _result.sprites.addAll(sprites);
+      result.sprites.addAll(sprites);
     }
     if (audios != null) {
-      _result.audios.addAll(audios);
+      result.audios.addAll(audios);
     }
-    return _result;
+    return result;
   }
   factory MovieEntity.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
@@ -1985,9 +1985,9 @@ class MovieEntity extends $pb.GeneratedMessage {
   Map<String, ui.Path> pathCache = {};
 
   void dispose() {
-    bitmapCache.values.forEach((element) {
+    for (var element in bitmapCache.values) {
       element.dispose();
-    });
+    }
     bitmapCache.clear();
     pathCache.clear();
   }
