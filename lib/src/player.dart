@@ -113,7 +113,22 @@ class SVGAAnimationController extends AnimationController {
     return videoItem.params.frames;
   }
 
-  /// mark [_SVGAPainter] needs clear
+  /// Pauses the animation if it is currently animating.
+  void pause() {
+    if (isAnimating) stop();
+  }
+
+  /// Resumes the animation if it has been paused and is not yet complete.
+  ///
+  /// The animation will continue playing from its current position
+  /// if it is not already animating and the current value is
+  /// between 0.0 (start) and 1.0 (end).
+  void resume() {
+    if (!isAnimating && value > 0.0 && value < 1.0) forward();
+  }
+
+  /// Clears the animation canvas by setting the internal flag `_canvasNeedsClear` to `true`.
+  /// If the controller is not disposed, this will notify all listeners about the change.
   void clear() {
     _canvasNeedsClear = true;
     if (!_isDisposed) notifyListeners();

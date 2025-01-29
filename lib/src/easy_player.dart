@@ -65,6 +65,7 @@ class _SVGAEasyPlayerState extends State<SVGAEasyPlayer>
     } else {
       return;
     }
+
     decode.then((videoItem) {
       if (mounted && animationController != null) {
         animationController!
@@ -73,17 +74,17 @@ class _SVGAEasyPlayerState extends State<SVGAEasyPlayer>
       } else {
         videoItem.dispose();
       }
-    }).catchError((e, stack) {
-      FlutterError.reportError(FlutterErrorDetails(
-        exception: e,
-        stack: stack,
-        library: 'svga library',
-        informationCollector: () => [
-          if (widget.resUrl != null) StringProperty('resUrl', widget.resUrl),
-          if (widget.assetsName != null)
-            StringProperty('assetsName', widget.assetsName),
-        ],
-      ));
-    });
+    }).catchError(
+      (e, stack) {
+        FlutterError.reportError(
+          FlutterErrorDetails(
+            exception: e,
+            stack: stack,
+            library: 'SVGAEasyPlayer',
+            context: ErrorDescription('during _tryDecodeSvga'),
+          ),
+        );
+      },
+    );
   }
 }
