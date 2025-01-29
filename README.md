@@ -4,8 +4,8 @@ A **Flutter package** for parsing and rendering **SVGA animations** efficiently.
 SVGA is a lightweight and powerful animation format used for **dynamic UI effects** in mobile applications.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/5alafawyyy/flutter_svga/main/example.gif" width="300"/>
-  <img src="https://raw.githubusercontent.com/5alafawyyy/flutter_svga/main/example1.gif" width="300"/>
+  <img src="https://raw.githubusercontent.com/5alafawyyy/flutter_svga/master/example.gif" width="300"/>
+  <img src="https://raw.githubusercontent.com/5alafawyyy/flutter_svga/master/example1.gif" width="300"/>
 </p>
 
 ---
