@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(title: Text("Flutter SVGA Example")),
         body: Center(
           child: SVGAEasyPlayer(
-            assetsName: "assets/sample.svga",
+            assetsName: "assets/with_audio.svga",
             fit: BoxFit.contain,
           ),
         ),
