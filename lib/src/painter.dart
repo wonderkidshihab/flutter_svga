@@ -186,26 +186,26 @@ class _SVGAPainter extends CustomPainter {
         paint.strokeWidth = strokeWidth;
         final lineCap = shape.styles.lineCap;
         switch (lineCap) {
-          case ShapeEntity_ShapeStyle_LineCap.lineCapButt:
+          case ShapeEntity_ShapeStyle_LineCap.LineCap_BUTT:
             paint.strokeCap = StrokeCap.butt;
             break;
-          case ShapeEntity_ShapeStyle_LineCap.lineCapROUND:
+          case ShapeEntity_ShapeStyle_LineCap.LineCap_ROUND:
             paint.strokeCap = StrokeCap.round;
             break;
-          case ShapeEntity_ShapeStyle_LineCap.lineCapSQUARE:
+          case ShapeEntity_ShapeStyle_LineCap.LineCap_SQUARE:
             paint.strokeCap = StrokeCap.square;
             break;
           default:
         }
         final lineJoin = shape.styles.lineJoin;
         switch (lineJoin) {
-          case ShapeEntity_ShapeStyle_LineJoin.lineJoinMITER:
+          case ShapeEntity_ShapeStyle_LineJoin.LineJoin_MITER:
             paint.strokeJoin = StrokeJoin.miter;
             break;
-          case ShapeEntity_ShapeStyle_LineJoin.lineJoinROUND:
+          case ShapeEntity_ShapeStyle_LineJoin.LineJoin_ROUND:
             paint.strokeJoin = StrokeJoin.round;
             break;
-          case ShapeEntity_ShapeStyle_LineJoin.lineJoinBEVEL:
+          case ShapeEntity_ShapeStyle_LineJoin.LineJoin_BEVEL:
             paint.strokeJoin = StrokeJoin.bevel;
             break;
           default:
@@ -241,11 +241,11 @@ class _SVGAPainter extends CustomPainter {
 
   Path buildPath(ShapeEntity shape) {
     final path = Path();
-    if (shape.type == ShapeEntity_ShapeType.shape) {
+    if (shape.type == ShapeEntity_ShapeType.SHAPE) {
       final args = shape.shape;
       final argD = args.d;
       return buildDPath(argD, path: path);
-    } else if (shape.type == ShapeEntity_ShapeType.ellipse) {
+    } else if (shape.type == ShapeEntity_ShapeType.ELLIPSE) {
       final args = shape.ellipse;
       final xv = args.x;
       final yv = args.y;
@@ -253,7 +253,7 @@ class _SVGAPainter extends CustomPainter {
       final ryv = args.radiusY;
       final rect = Rect.fromLTWH(xv - rxv, yv - ryv, rxv * 2, ryv * 2);
       if (!rect.isEmpty) path.addOval(rect);
-    } else if (shape.type == ShapeEntity_ShapeType.rect) {
+    } else if (shape.type == ShapeEntity_ShapeType.RECT) {
       final args = shape.rect;
       final xv = args.x;
       final yv = args.y;
