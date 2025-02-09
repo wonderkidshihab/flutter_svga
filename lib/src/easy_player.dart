@@ -82,6 +82,12 @@ class _SVGAEasyPlayerState extends State<SVGAEasyPlayer>
             stack: stack,
             library: 'SVGAEasyPlayer',
             context: ErrorDescription('during _tryDecodeSvga'),
+            informationCollector: () => [
+              if (widget.resUrl != null)
+                StringProperty('resUrl', widget.resUrl),
+              if (widget.assetsName != null)
+                StringProperty('assetsName', widget.assetsName),
+            ],
           ),
         );
       },
