@@ -22,7 +22,7 @@ class SVGAAudioLayer {
       final cacheDir = await getApplicationCacheDirectory();
       final cacheFile = File('${cacheDir.path}/temp_${audioItem.audioKey}.mp3');
 
-      if (!cacheFile.existsSync() ) {
+      if (!cacheFile.existsSync()) {
         await cacheFile.writeAsBytes(audioData);
       }
 

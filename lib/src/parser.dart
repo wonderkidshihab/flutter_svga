@@ -79,8 +79,8 @@ class SVGAParser {
       if (isMP3Data(data)) {
         movieItem.audiosData[item.key] = data;
       } else {
-        final decodeImage = await _decodeImageItem(item.key, data,
-            timeline: timeline);
+        final decodeImage =
+            await _decodeImageItem(item.key, data, timeline: timeline);
         if (decodeImage != null) {
           movieItem.bitmapCache[item.key] = decodeImage;
         }
@@ -126,7 +126,8 @@ class SVGAParser {
   bool isMP3Data(Uint8List data) {
     const mp3MagicNumber = 'ID3';
     bool result = false;
-    if (String.fromCharCodes(data.take(mp3MagicNumber.length)) == mp3MagicNumber) {
+    if (String.fromCharCodes(data.take(mp3MagicNumber.length)) ==
+        mp3MagicNumber) {
       result = true;
     }
     return result;

@@ -13,6 +13,7 @@ import 'proto/svga.pbserver.dart';
 
 part 'easy_player.dart';
 part 'painter.dart';
+
 class SVGAImage extends StatefulWidget {
   final SVGAAnimationController _controller;
   final BoxFit fit;
@@ -31,7 +32,7 @@ class SVGAImage extends StatefulWidget {
   final bool? allowDrawingOverflow;
 
   /// If `null`, the viewbox size of [MovieEntity] will be use.
-  /// 
+  ///
   /// Defaults to null.
   final Size? preferredSize;
   const SVGAImage(
@@ -198,13 +199,13 @@ class _SVGAImageState extends State<SVGAImage> {
   handleAudio() {
     final audioLayers = widget._controller._audioLayers;
     for (final audio in audioLayers) {
-      if (!audio.isPlaying()
-          && audio.audioItem.startFrame <= widget._controller.currentFrame
-          && audio.audioItem.endFrame >= widget._controller.currentFrame) {
+      if (!audio.isPlaying() &&
+          audio.audioItem.startFrame <= widget._controller.currentFrame &&
+          audio.audioItem.endFrame >= widget._controller.currentFrame) {
         audio.playAudio();
       }
-      if (audio.isPlaying()
-          && audio.audioItem.endFrame <= widget._controller.currentFrame) {
+      if (audio.isPlaying() &&
+          audio.audioItem.endFrame <= widget._controller.currentFrame) {
         audio.stopAudio();
       }
     }
