@@ -5,6 +5,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svga/src/audio_layer.dart';
 import 'package:path_drawing/path_drawing.dart';
 
 import 'parser.dart';
@@ -12,7 +13,6 @@ import 'proto/svga.pbserver.dart';
 
 part 'easy_player.dart';
 part 'painter.dart';
-
 class SVGAImage extends StatefulWidget {
   final SVGAAnimationController _controller;
   final BoxFit fit;
@@ -31,18 +31,18 @@ class SVGAImage extends StatefulWidget {
   final bool? allowDrawingOverflow;
 
   /// If `null`, the viewbox size of [MovieEntity] will be use.
-  ///
+  /// 
   /// Defaults to null.
   final Size? preferredSize;
   const SVGAImage(
     this._controller, {
-    super.key,
+    Key? key,
     this.fit = BoxFit.contain,
     this.filterQuality = FilterQuality.low,
     this.allowDrawingOverflow,
     this.clearsAfterStop = true,
     this.preferredSize,
-  });
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _SVGAImageState();
@@ -56,11 +56,12 @@ class SVGAImage extends StatefulWidget {
 
 class SVGAAnimationController extends AnimationController {
   MovieEntity? _videoItem;
+  final List<SVGAAudioLayer> _audioLayers = [];
   bool _canvasNeedsClear = false;
 
   SVGAAnimationController({
-    required super.vsync,
-  }) : super(duration: Duration.zero);
+    required TickerProvider vsync,
+  }) : super(vsync: vsync, duration: Duration.zero);
 
   set videoItem(MovieEntity? value) {
     assert(!_isDisposed, '$this has been disposed!');
@@ -84,9 +85,14 @@ class SVGAAnimationController extends AnimationController {
           "Invalid SVGA file!");
       int fps = movieParams.fps;
       // avoid dividing by 0, use 20 by default
+      // see https://github.com/svga/SVGAPlayer-Web/blob/1c5711db068a25006316f9890b11d6666d531c39/src/videoEntity.js#L51
       if (fps == 0) fps = 20;
       duration =
           Duration(milliseconds: (movieParams.frames / fps * 1000).toInt());
+
+      for (var audio in value.audios) {
+        _audioLayers.add(SVGAAudioLayer(audio, value));
+      }
     } else {
       duration = Duration.zero;
     }
@@ -113,22 +119,7 @@ class SVGAAnimationController extends AnimationController {
     return videoItem.params.frames;
   }
 
-  /// Pauses the animation if it is currently animating.
-  void pause() {
-    if (isAnimating) stop();
-  }
-
-  /// Resumes the animation if it has been paused and is not yet complete.
-  ///
-  /// The animation will continue playing from its current position
-  /// if it is not already animating and the current value is
-  /// between 0.0 (start) and 1.0 (end).
-  void resume() {
-    if (!isAnimating && value > 0.0 && value < 1.0) forward();
-  }
-
-  /// Clears the animation canvas by setting the internal flag `_canvasNeedsClear` to `true`.
-  /// If the controller is not disposed, this will notify all listeners about the change.
+  /// mark [_SVGAPainter] needs clear
   void clear() {
     _canvasNeedsClear = true;
     if (!_isDisposed) notifyListeners();
@@ -141,9 +132,20 @@ class SVGAAnimationController extends AnimationController {
     return super.forward(from: from);
   }
 
+  @override
+  void stop({bool canceled = true}) {
+    for (final audio in _audioLayers) {
+      audio.pauseAudio();
+    }
+    super.stop(canceled: canceled);
+  }
+
   bool _isDisposed = false;
   @override
   void dispose() {
+    for (final audio in _audioLayers) {
+      audio.dispose();
+    }
     // auto dispose _videoItem when set null
     videoItem = null;
     _isDisposed = true;
@@ -153,6 +155,7 @@ class SVGAAnimationController extends AnimationController {
 
 class _SVGAImageState extends State<SVGAImage> {
   MovieEntity? video;
+
   @override
   void initState() {
     super.initState();
@@ -174,19 +177,36 @@ class _SVGAImageState extends State<SVGAImage> {
   }
 
   void _handleChange() {
-    if (mounted &&
-        !widget._controller._isDisposed &&
-        video != widget._controller.videoItem) {
-      setState(() {
-        // rebuild
-        video = widget._controller.videoItem;
-      });
+    if (mounted) {
+      if (video == widget._controller.videoItem) {
+        handleAudio();
+      } else if (!widget._controller._isDisposed) {
+        setState(() {
+          // rebuild
+          video = widget._controller.videoItem;
+        });
+      }
     }
   }
 
   void _handleStatusChange(AnimationStatus status) {
     if (status == AnimationStatus.completed && widget.clearsAfterStop) {
       widget._controller.clear();
+    }
+  }
+
+  handleAudio() {
+    final audioLayers = widget._controller._audioLayers;
+    for (final audio in audioLayers) {
+      if (!audio.isPlaying()
+          && audio.audioItem.startFrame <= widget._controller.currentFrame
+          && audio.audioItem.endFrame >= widget._controller.currentFrame) {
+        audio.playAudio();
+      }
+      if (audio.isPlaying()
+          && audio.audioItem.endFrame <= widget._controller.currentFrame) {
+        audio.stopAudio();
+      }
     }
   }
 
