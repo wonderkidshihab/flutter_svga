@@ -16,6 +16,7 @@ SVGA is a lightweight and powerful animation format used for **dynamic UI effect
 ✔️ Load SVGA files from **assets** and **network URLs**.  
 ✔️ Supports **custom dynamic elements** (text, images, animations).  
 ✔️ **Optimized playback performance** with animation controllers.  
+✔️ **Integrated audio playback** within SVGA animations.  
 ✔️ Works on **Android & iOS** (Web & Desktop support coming soon).  
 ✔️ Easy **loop, stop, and seek** functions.
 
@@ -27,7 +28,7 @@ Add **flutter_svga** to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_svga: ^0.0.3
+  flutter_svga: ^0.0.4
 ```
 Then, install dependencies:
 
@@ -56,7 +57,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(title: Text("Flutter SVGA Example")),
         body: Center(
           child: SVGAEasyPlayer(
-            assetsName: "assets/sample.svga",
+            assetsName: "assets/sample_with_audio.svga",
             fit: BoxFit.contain,
           ),
         ),
@@ -196,14 +197,14 @@ setState(() {
 
 ## 📱 **Supported Platforms**
 
-| Platform | Supported |
-|----------|-----------|
-| ✅ Android | ✔️ Yes |
-| ✅ iOS | ✔️ Yes |
-| ✅ Linux | ✔️ Yes |
-| ✅ Web | ✔️ Yes |
-| ✅ macOS | ✔️ Yes |
-| ✅ Desktop | ✔️ Yes |
+| Platform | Supported | Audio Support |
+|----------|-----------|---------------|
+| ✅ Android | ✔️ Yes | ✔️ Yes |
+| ✅ iOS | ✔️ Yes | ✔️ Yes |
+| ✅ Linux | ✔️ Yes | ✔️ Yes |
+| ✅ Web | ✔️ Yes | ❌ No |
+| ✅ macOS | ✔️ Yes | ✔️ Yes |
+| ✅ Desktop | ✔️ Yes | ✔️ Yes |
 
 ---
 

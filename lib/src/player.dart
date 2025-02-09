@@ -36,13 +36,13 @@ class SVGAImage extends StatefulWidget {
   final Size? preferredSize;
   const SVGAImage(
     this._controller, {
-    Key? key,
+    super.key,
     this.fit = BoxFit.contain,
     this.filterQuality = FilterQuality.low,
     this.allowDrawingOverflow,
     this.clearsAfterStop = true,
     this.preferredSize,
-  }) : super(key: key);
+  });
 
   @override
   State<StatefulWidget> createState() => _SVGAImageState();
@@ -60,8 +60,8 @@ class SVGAAnimationController extends AnimationController {
   bool _canvasNeedsClear = false;
 
   SVGAAnimationController({
-    required TickerProvider vsync,
-  }) : super(vsync: vsync, duration: Duration.zero);
+    required super.vsync,
+  }) : super(duration: Duration.zero);
 
   set videoItem(MovieEntity? value) {
     assert(!_isDisposed, '$this has been disposed!');

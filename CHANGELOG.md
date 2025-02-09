@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.4 - Update (2025-02-09)
+
+### 🔥 New Features & Improvements
+- ✅ **Added Audio Support**: Integrated audio playback within SVGA animations using the `audioplayers` package.
+
+---
+
 ## 0.0.3 - Update (2025-01-30)
 
 ### 🔥 New Features & Improvements
