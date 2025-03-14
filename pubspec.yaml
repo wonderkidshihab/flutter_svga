@@ -5,7 +5,7 @@ homepage: https://github.com/5alafawyyy/flutter_svga
 repository: https://github.com/5alafawyyy/flutter_svga
 
 environment:
-  sdk: ^3.6.1
+  sdk: ^3.7.2
   flutter: ">=1.17.0"
 
 dependencies:
