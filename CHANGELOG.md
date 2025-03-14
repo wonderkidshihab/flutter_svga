@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.5 - Update (2025-03-14)
+
+### 🔥 Upgrade to flutter version 3.29.2
+
+---
+
 ## 0.0.4 - Update (2025-02-09)
 
 ### 🔥 New Features & Improvements
