@@ -10,10 +10,12 @@ class SVGAAudioLayer {
   late final AudioEntity audioItem;
   late final MovieEntity _videoItem;
   bool _isReady = false;
+  bool _disposed = false;
 
   SVGAAudioLayer(this.audioItem, this._videoItem);
 
   Future<void> playAudio() async {
+    if (_disposed) return;
     final audioData = _videoItem.audiosData[audioItem.audioKey];
     if (audioData != null) {
       // https://github.com/bluefireteam/audioplayers/issues/1782
@@ -41,28 +43,35 @@ class SVGAAudioLayer {
     }
   }
 
-  pauseAudio() {
+  void pauseAudio() {
+    if (_disposed) return;
     _player.pause();
   }
 
-  resumeAudio() {
+  void resumeAudio() {
+    if (_disposed) return;
     _player.resume();
   }
 
-  stopAudio() {
+  void stopAudio() {
+    if (_disposed) return;
     if (isPlaying() || isPaused()) _player.stop();
   }
 
-  isPlaying() {
+  bool isPlaying() {
+    if (_disposed) return false;
     return _player.state == PlayerState.playing;
   }
 
-  isPaused() {
+  bool isPaused() {
+    if (_disposed) return false;
     return _player.state == PlayerState.paused;
   }
 
-  Future<void> dispose() {
+  Future<void> dispose() async {
+    if (_disposed) return;
+    _disposed = true;
     if (isPlaying()) stopAudio();
-    return _player.dispose();
+    await _player.dispose();
   }
 }

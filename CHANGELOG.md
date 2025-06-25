@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.0.6] - 2025-06-26
+
+### Fixed
+- 🎧 Prevent crash when AudioPlayer is accessed after dispose (#1)
+- 🛠️ Updated to support protobuf 4+, other latest dependencies and use Flutter 3.32.5 (#2)
+
+### Maintenance
+- Improved safety checks in SVGAAudioLayer
+- Compatible with Dart 3.0 and Flutter 3.32+
+
+---
+
 ## 0.0.5 - Update (2025-03-14)
 
 ### 🔥 Upgrade to flutter version 3.29.2
