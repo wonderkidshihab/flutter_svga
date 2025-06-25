@@ -84,9 +84,11 @@ class _HomeScreenState extends State<HomeScreen> {
   /// This function is used by the "Load SVGA from text field" button in the
   /// [MyApp] widget, to load an animation from a URL entered in the text field.
   void _goToSampleFromInput(BuildContext context, String imageUrl) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => SVGASampleScreen(image: imageUrl),
-    ));
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => SVGASampleScreen(image: imageUrl),
+      ),
+    );
   }
 
   /// Load the animation from the URL in the text field, and navigate to
@@ -112,21 +114,27 @@ class _HomeScreenState extends State<HomeScreen> {
   final dynamicSamples = <String, void Function(MovieEntity entity)>{
     "kingset.svga": (entity) => entity.dynamicItem
       ..setText(
-          TextPainter(
-              text: TextSpan(
-                  text: "Hello, World!",
-                  style: TextStyle(
-                    fontSize: 28,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ))),
-          "banner")
+        TextPainter(
+          text: TextSpan(
+            text: "Hello, World!",
+            style: TextStyle(
+              fontSize: 28,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        "banner",
+      )
       ..setImageWithUrl(
-          "https://github.com/PonyCui/resources/blob/master/svga_replace_avatar.png?raw=true",
-          "99")
+        "https://github.com/PonyCui/resources/blob/master/svga_replace_avatar.png?raw=true",
+        "99",
+      )
       ..setDynamicDrawer((canvas, frameIndex) {
-        canvas.drawRect(Rect.fromLTWH(0, 0, 88, 88),
-            Paint()..color = Colors.red); // draw by yourself.
+        canvas.drawRect(
+          Rect.fromLTWH(0, 0, 88, 88),
+          Paint()..color = Colors.red,
+        ); // draw by yourself.
       }, "banner"),
   };
 
@@ -161,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: ListView.separated(
                 itemCount: samples.length,
-                separatorBuilder: (_, __) => Divider(
+                separatorBuilder: (_, _) => Divider(
                   color: Colors.grey,
                   thickness: 1,
                   indent: 16,
@@ -171,10 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   return ListTile(
                     leading: CircleAvatar(
                       backgroundColor: Colors.blueAccent,
-                      child: Icon(
-                        Icons.animation,
-                        color: Colors.white,
-                      ),
+                      child: Icon(Icons.animation, color: Colors.white),
                     ),
                     title: Text(
                       samples[index].first,
@@ -185,10 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     subtitle: Text(
                       samples[index].last,
-                      style: TextStyle(
-                        color: Colors.grey[600],
-                        fontSize: 14,
-                      ),
+                      style: TextStyle(color: Colors.grey[600], fontSize: 14),
                     ),
                     trailing: Icon(
                       Icons.play_circle_fill_outlined,
@@ -318,9 +320,11 @@ class _SVGASampleScreenState extends State<SVGASampleScreen>
           ? null
           : FloatingActionButton.extended(
               label: Text(animationController!.isAnimating ? "Pause" : "Play"),
-              icon: Icon(animationController!.isAnimating
-                  ? Icons.pause
-                  : Icons.play_arrow),
+              icon: Icon(
+                animationController!.isAnimating
+                    ? Icons.pause
+                    : Icons.play_arrow,
+              ),
               onPressed: () {
                 if (animationController?.isAnimating == true) {
                   animationController?.stop();
@@ -328,7 +332,8 @@ class _SVGASampleScreenState extends State<SVGASampleScreen>
                   _playAnimation();
                 }
                 setState(() {});
-              }),
+              },
+            ),
     );
   }
 
@@ -559,11 +564,7 @@ class _SVGASampleScreenState extends State<SVGASampleScreen>
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(label),
-          Switch(
-            value: value,
-            onChanged: onChanged,
-            activeColor: Colors.blue,
-          ),
+          Switch(value: value, onChanged: onChanged, activeColor: Colors.blue),
         ],
       ),
     );

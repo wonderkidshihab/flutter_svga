@@ -60,9 +60,8 @@ class SVGAAnimationController extends AnimationController {
   final List<SVGAAudioLayer> _audioLayers = [];
   bool _canvasNeedsClear = false;
 
-  SVGAAnimationController({
-    required super.vsync,
-  }) : super(duration: Duration.zero);
+  SVGAAnimationController({required super.vsync})
+    : super(duration: Duration.zero);
 
   set videoItem(MovieEntity? value) {
     assert(!_isDisposed, '$this has been disposed!');
@@ -80,16 +79,18 @@ class SVGAAnimationController extends AnimationController {
     if (value != null) {
       final movieParams = value.params;
       assert(
-          movieParams.viewBoxWidth >= 0 &&
-              movieParams.viewBoxHeight >= 0 &&
-              movieParams.frames >= 1,
-          "Invalid SVGA file!");
+        movieParams.viewBoxWidth >= 0 &&
+            movieParams.viewBoxHeight >= 0 &&
+            movieParams.frames >= 1,
+        "Invalid SVGA file!",
+      );
       int fps = movieParams.fps;
       // avoid dividing by 0, use 20 by default
       // see https://github.com/svga/SVGAPlayer-Web/blob/1c5711db068a25006316f9890b11d6666d531c39/src/videoEntity.js#L51
       if (fps == 0) fps = 20;
-      duration =
-          Duration(milliseconds: (movieParams.frames / fps * 1000).toInt());
+      duration = Duration(
+        milliseconds: (movieParams.frames / fps * 1000).toInt(),
+      );
 
       for (var audio in value.audios) {
         _audioLayers.add(SVGAAudioLayer(audio, value));
@@ -128,8 +129,10 @@ class SVGAAnimationController extends AnimationController {
 
   @override
   TickerFuture forward({double? from}) {
-    assert(_videoItem != null,
-        'SVGAAnimationController.forward() called after dispose()?');
+    assert(
+      _videoItem != null,
+      'SVGAAnimationController.forward() called after dispose()?',
+    );
     return super.forward(from: from);
   }
 
@@ -196,7 +199,7 @@ class _SVGAImageState extends State<SVGAImage> {
     }
   }
 
-  handleAudio() {
+  void handleAudio() {
     final audioLayers = widget._controller._audioLayers;
     for (final audio in audioLayers) {
       if (!audio.isPlaying() &&
@@ -234,8 +237,9 @@ class _SVGAImageState extends State<SVGAImage> {
     // sugguest the size of CustomPaint
     Size preferredSize = viewBoxSize;
     if (widget.preferredSize != null) {
-      preferredSize =
-          BoxConstraints.tight(widget.preferredSize!).constrain(viewBoxSize);
+      preferredSize = BoxConstraints.tight(
+        widget.preferredSize!,
+      ).constrain(viewBoxSize);
     }
     return IgnorePointer(
       child: CustomPaint(
